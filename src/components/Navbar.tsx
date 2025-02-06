@@ -21,7 +21,7 @@ export default function Navbar() {
               <Image
                 width={48}
                 height={48}
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png"
+                src="https://ai.ez1.dev/logo-light-styled.png"
                 alt="Ez1 Logo"
                 className="w-[48px] h-[48px] object-contain"
                 priority
