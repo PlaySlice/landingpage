@@ -106,8 +106,7 @@ export function BackgroundPaths({
               <Button
                 variant="ghost"
                 className="rounded-xl px-6 py-3 text-base font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-black dark:text-white transition-all duration-300 hover:-translate-y-0.5 border border-black/10 dark:border-white/10 hover:shadow-md dark:hover:shadow-neutral-800/50"
-                onClick={() => (window.location.href = "https://ai.ez1.dev")}
-                disabled={true}
+                onClick={() => (window.location.href = "https://ez1.gitbook.io/ez1-docs")}
               >
                 <Book className="w-5 h-5 mr-2" />
                 <span className="opacity-90 group-hover:opacity-100 transition-opacity">Visit documentation</span>

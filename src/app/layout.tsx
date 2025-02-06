@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "ez1 - Dream It, Build It.",
   description:
-    "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
+    "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
   keywords: [
     "AI agent",
     "project builder",
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     "AI coding",
     "project creation",
   ],
-  authors: [{ name: "Ez1" }],
+  authors: [{ name: "ez1" }],
   openGraph: {
     title: "Ez1 - Dream It, Build It.",
     description:
-      "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
+      "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     url: "https://ez1.dev",
     siteName: "ez1",
     images: [
