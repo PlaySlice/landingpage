@@ -7,7 +7,7 @@ export default function Home() {
     <div className="h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow flex items-start justify-center">
-        <BackgroundPaths title="Your local AI agents, online!" />
+        <BackgroundPaths title="Dream It, Build It!" />
       </main>
       <Footer />
     </div>
