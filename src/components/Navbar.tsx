@@ -21,8 +21,8 @@ export default function Navbar() {
               <Image
                 width={48}
                 height={48}
-                <img src="/logo-light-styled.png" alt="logo" className="w-[90px] inline-block dark:hidden" />
-                alt="Ez1 Logo"
+                src="/logo-light-styled.png"
+                alt="ez1 Logo"
                 className="w-[48px] h-[48px] object-contain"
                 priority
               />
