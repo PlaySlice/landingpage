@@ -6,7 +6,7 @@ import type React from "react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ez1 - Dream It, Build It.",
+  title: "ez1 - Dream It, Build It.",
   description:
     "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
   keywords: [
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     description:
       "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
     url: "https://ez1.dev",
-    siteName: "Ez1",
+    siteName: "ez1",
     images: [
       {
         url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
         width: 512,
         height: 512,
-        alt: "Ez1 Logo",
+        alt: "ez1 Logo",
       },
     ],
     locale: "en_US",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ez1 - Dream It, Build It.",
+    title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
     images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png"],
