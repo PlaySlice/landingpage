@@ -22,7 +22,7 @@ export default function Navbar() {
                 width={48}
                 height={48}
                 src="/logo-light-styled.png"
-                alt="ez1 Logo"
+                alt="Ez1 Logo"
                 className="w-[48px] h-[48px] object-contain"
                 priority
               />
