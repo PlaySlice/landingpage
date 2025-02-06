@@ -19,11 +19,11 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <a href="/" className="block">
               <Image
-                width={48}
-                height={48}
+                width={96}
+                height={96}
                 src="/logo-light-styled.png"
                 alt="Ez1 Logo"
-                className="w-[48px] h-[48px] object-contain"
+                className="w-[96px] h-[96px] object-contain"
                 priority
               />
             </a>
