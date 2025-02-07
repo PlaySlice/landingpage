@@ -1,16 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { Moon, Sun, Twitter, Send } from "lucide-react";
 import Image from "next/image";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Navbar() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="bg-white/80 dark:bg-neutral-950 backdrop-blur-md">
@@ -21,7 +16,11 @@ export default function Navbar() {
               <Image
                 width={96}
                 height={96}
-                src="/logo-light-styled.png"
+                src={
+                  theme === "dark"
+                    ? "/logo-dark-styled.png"
+                    : "/logo-light-styled.png"
+                }
                 alt="Ez1 Logo"
                 className="w-[96px] h-[96px] object-contain"
                 priority
@@ -46,10 +45,10 @@ export default function Navbar() {
               <Send className="h-4 w-4" />
             </a>
             <button
-              onClick={toggleDarkMode}
+              onClick={toggleTheme}
               className="text-neutral-700 dark:text-white hover:text-neutral-900 dark:hover:text-white/80 transition-colors"
             >
-              {isDarkMode ? (
+              {theme === "dark" ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />

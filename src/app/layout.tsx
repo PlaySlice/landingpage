@@ -1,9 +1,10 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import type React from "react"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import type React from "react";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ez1 - Dream It, Build It.",
@@ -44,7 +45,9 @@ export const metadata: Metadata = {
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png"],
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+    ],
     creator: "@ez1dev",
   },
   icons: {
@@ -88,17 +91,18 @@ export const metadata: Metadata = {
       },
     ],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
-  )
+  );
 }
-
