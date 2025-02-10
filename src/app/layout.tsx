@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "AI development",
     "software projects",
     "automated development",
-    "Ez1",
+    "ez1",
     "AI coding",
     "project creation",
   ],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ez1 - Dream It, Build It.",
     description:
-      "Build and create projects effortlessly with Ez1, your intelligent AI agent companion for development and innovation.",
+      "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     images: [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
     ],
