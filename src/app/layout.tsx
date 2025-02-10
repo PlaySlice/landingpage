@@ -1,95 +1,37 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import type React from "react";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import ThemeProvider from "@/components/ThemeProvider"; // Adjust the import path as needed
 
+// Initialize the Inter font
 const inter = Inter({ subsets: ["latin"] });
 
+// Metadata configuration with images from the public folder
 export const metadata: Metadata = {
   title: "ez1 - Dream It, Build It.",
   description:
     "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
-  keywords: [
-    "AI agent",
-    "project builder",
-    "development assistant",
-    "code generation",
-    "AI development",
-    "software projects",
-    "automated development",
-    "ez1",
-    "AI coding",
-    "project creation",
-  ],
-  authors: [{ name: "ez1" }],
   openGraph: {
+    type: "website",
+    url: "https://ez1.dev/",
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
-    url: "https://ez1.dev",
-    siteName: "ez1",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        width: 512,
-        height: 512,
-        alt: "ez1 Logo",
+        url: "/social-preview-index.png", // Image from the public folder
+        width: 1200, // Optional: adjust as needed
+        height: 630, // Optional: adjust as needed
+        alt: "Social preview image for ez1", // Optional: descriptive alt text
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    url: "https://ez1.dev/",
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
-    images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-    ],
-    creator: "@ez1dev",
-  },
-  icons: {
-    icon: [
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        type: "image/png",
-      },
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        sizes: "16x16",
-        type: "image/png",
-      },
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
-    apple: [
-      {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
-      },
-    ],
+    images: ["/social-preview-index.png"], // Image from the public folder
   },
 };
 
