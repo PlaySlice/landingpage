@@ -45,9 +45,13 @@ export const metadata: Metadata = {
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
-    images: [
-      "/social-preview-index.png",
-    ],
+    images:    
+    {
+      url: "https://ez1.dev/social_preview_index.png",
+      width: 512,
+      height: 512,
+      alt: "ez1 Logo",
+    },
     creator: "@ez1dev",
   },
   icons: {
