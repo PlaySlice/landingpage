@@ -46,40 +46,40 @@ export const metadata: Metadata = {
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+      "https://ez1.dev/apple-touch-icon-precomposed.png",
     ],
     creator: "@ez1dev",
   },
   icons: {
     icon: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         type: "image/png",
       },
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         sizes: "512x512",
         type: "image/png",
       },
     ],
     apple: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         sizes: "180x180",
         type: "image/png",
       },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     other: [
       {
         rel: "mask-icon",
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
       },
     ],
   },
