@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "ez1",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-dark-YpQ2PBG7Xgci7TxcZO3czjrspUhFcE.png",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
         width: 512,
         height: 512,
         alt: "ez1 Logo",
