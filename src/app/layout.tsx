@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "ez1",
     images: [
       {
-        url: "https://ez1.dev/web-app-manifest-512x512.png",
+        url: "https://ez1.dev/social-preview-index.png",
         width: 512,
         height: 512,
         alt: "ez1 Logo",
