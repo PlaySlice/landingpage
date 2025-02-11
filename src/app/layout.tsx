@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "ez1",
     images: [
       {
-        url: "https://ez1.dev/social-preview-index.webp",
+        url: "https://ez1.dev/social_preview_index.png",
         width: 512,
         height: 512,
         alt: "ez1 Logo",
@@ -46,40 +46,40 @@ export const metadata: Metadata = {
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     images: [
-      "./social-preview-index.png",
+      "/social-preview-index.png",
     ],
     creator: "@ez1dev",
   },
   icons: {
     icon: [
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         type: "image/png",
       },
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         sizes: "512x512",
         type: "image/png",
       },
     ],
     apple: [
       {
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
         sizes: "180x180",
         type: "image/png",
       },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     other: [
       {
         rel: "mask-icon",
-        url: "https://ez1.dev/social-preview-index.png",
+        url: "https://ez1.dev/social_preview_index.png",
       },
     ],
   },
