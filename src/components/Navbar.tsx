@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun, Twitter, Send } from "lucide-react";
+import { Moon, Sun, Twitter, Send, Youtube } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -43,6 +43,14 @@ export default function Navbar() {
               className="text-neutral-700 dark:text-white hover:text-neutral-900 dark:hover:text-white/80"
             >
               <Send className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.youtube.com/@ez1dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-700 dark:text-white hover:text-neutral-900 dark:hover:text-white/80"
+            >
+              <Youtube className="h-4 w-4" />
             </a>
             <button
               onClick={toggleTheme}
