@@ -10,29 +10,85 @@ export const metadata: Metadata = {
   title: "ez1 - Dream It, Build It.",
   description:
     "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
+  keywords: [
+    "AI agent",
+    "project builder",
+    "development assistant",
+    "code generation",
+    "AI development",
+    "software projects",
+    "automated development",
+    "ez1",
+    "AI coding",
+    "project creation",
+  ],
+  authors: [{ name: "ez1" }],
   openGraph: {
-    type: "website",
-    url: "https://ez1.dev/",
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
+    url: "https://ez1.dev",
+    siteName: "ez1",
     images: [
       {
-        url: "https://i.ibb.co/ks1XJgpK/social-preview-index.png",
-        width: 1200,
-        height: 630,
-        alt: "ez1 Social Preview",
+        url: "https://ez1.dev/apple-touch-icon-precomposed.png",
+        width: 512,
+        height: 512,
+        alt: "ez1 Logo",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    url: "https://ez1.dev/",
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     images: [
-      "https://i.ibb.co/ks1XJgpK/social-preview-index.png",
+      "social-preview-index.png",
+    ],
+    creator: "@ez1dev",
+  },
+  icons: {
+    icon: [
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        type: "image/png",
+      },
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "https://ez1.dev/social-preview-index.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "https://ez1.dev/social-preview-index.png",
+      },
     ],
   },
 };
@@ -44,33 +100,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <title>{metadata.title}</title>
-        <meta name="title" content={metadata.title} />
-        <meta name="description" content={metadata.description} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta
-          property="og:description"
-          content={metadata.openGraph.description}
-        />
-        <meta property="og:image" content={metadata.openGraph.images[0].url} />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content={metadata.twitter.card} />
-        <meta property="twitter:url" content={metadata.twitter.url} />
-        <meta property="twitter:title" content={metadata.twitter.title} />
-        <meta
-          property="twitter:description"
-          content={metadata.twitter.description}
-        />
-        <meta property="twitter:image" content={metadata.twitter.images[0]} />
-      </head>
-      <body>
-        {children}
+      <body className={inter.className}>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
