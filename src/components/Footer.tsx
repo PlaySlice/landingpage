@@ -35,12 +35,12 @@ export default function Footer() {
             >
               <Youtube className="h-4 w-4" />
             </a>
-            <button
+     {/*        <button
               className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded"
               // You can add an onClick handler here if needed
             >
               Subscribe
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
