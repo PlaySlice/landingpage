@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="bg-yellow-50 border-b border-yellow-200 text-yellow-900 flex items-center justify-center py-2 px-4">
         <AlertTriangle className="h-5 w-5 mr-2" />
         <p className="text-sm font-semibold">
-          Beware of fake contracts — we are not live yet!
+          Beware of fake contracts — we have not launched yet!
         </p>
       </div>
 
