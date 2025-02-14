@@ -9,9 +9,13 @@ export default function Home() {
       <main className="flex-grow flex items-start justify-center">
         <BackgroundPaths title="Dream It, Build It!" />
       </main>
-      <div className="text-center p-4">
-        <h2 className="text-2xl font-bold">How will $EZ token be implemented?</h2>
-        <p>User will have to pay a fee to deploy directly on ez1</p>
+      <div className="max-w-xl mx-auto my-8 bg-white shadow-lg rounded-lg p-6 text-center">
+        <h2 className="text-2xl font-semibold mb-3 text-gray-800">
+          $EZ Token Implementation Strategy
+        </h2>
+        <p className="text-gray-600">
+          The $EZ token is an integral part of our ecosystem. To maintain platform integrity and ensure sustainable development, a nominal fee will be applied during the deployment process on the EZ1 platform.
+        </p>
       </div>
       <Footer />
     </div>
