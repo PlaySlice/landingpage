@@ -9,8 +9,11 @@ export default function Home() {
       <main className="flex-grow flex items-start justify-center">
         <BackgroundPaths title="Dream It, Build It!" />
       </main>
+      <div className="text-center p-4">
+        <h2 className="text-2xl font-bold">How will $EZ token be implemented?</h2>
+        <p>User will have to pay a fee to deploy directly on ez1</p>
+      </div>
       <Footer />
     </div>
   )
 }
-
