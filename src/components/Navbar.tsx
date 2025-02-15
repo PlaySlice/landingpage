@@ -1,19 +1,47 @@
 "use client";
 
-import { AlertTriangle, Moon, Sun, Twitter, Send, Youtube } from "lucide-react";
+import { AlertTriangle, Moon, Sun, Twitter, Send, Youtube, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useState } from "react";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const contractAddress = "66ce7iZ5uqnVbh4Rt5wChHWyVfUvv1LJrBo8o214pump";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(contractAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    } catch (error) {
+      console.error("Failed to copy:", error);
+    }
+  };
 
   return (
     <>
       {/* Banner Message */}
-      <div className="bg-yellow-50 border-b border-yellow-200 text-yellow-900 flex items-center justify-center py-2 px-4">
+      <div className="bg-green-50 border-b border-green-200 text-green-900 flex items-center justify-center py-2 px-4">
         <AlertTriangle className="h-5 w-5 mr-2" />
         <p className="text-sm font-semibold">
-          Beware of fake contracts — we have not launched yet!
+          We have launched our token. CA :{" "}
+          <span
+            onClick={handleCopy}
+            className="underline cursor-pointer hover:text-green-700"
+          >
+            {contractAddress}
+          </span>
+          <a
+            href="https://pump.fun/coin/66ce7iZ5uqnVbh4Rt5wChHWyVfUvv1LJrBo8o214pump"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 inline-block text-green-900 hover:text-green-700"
+          >
+            <ExternalLink className="h-4 w-4" />
+          </a>
+          {copied && <span className="ml-2 text-xs">(Copied!)</span>}
         </p>
       </div>
 
