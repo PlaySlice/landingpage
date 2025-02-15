@@ -34,7 +34,7 @@ export default function Navbar() {
             {contractAddress}
           </span>
           <a
-            href="https://pump.fun/coin/66ce7iZ5uqnVbh4Rt5wChHWyVfUvv1LJrBo8o214pump"
+            href="https://dexscreener.com/solana/cedoapevhivr96swkvb2ebr8ick1ax1dwb2ygjqtz4gd"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-1 inline-block text-green-900 hover:text-green-700"
