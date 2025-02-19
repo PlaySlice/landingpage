@@ -10,14 +10,14 @@ export default function Navbar() {
   const contractAddress = "66ce7iZ5uqnVbh4Rt5wChHWyVfUvv1LJrBo8o214pump";
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
+/*   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(contractAddress);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
     } catch (error) {
       console.error("Failed to copy:", error);
-    }
+    } */
   };
 
   return (
