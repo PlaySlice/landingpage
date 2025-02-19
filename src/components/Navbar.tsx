@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Banner Message */}
+      {/* {/* Banner Message */}
       <div className="bg-green-50 border-b border-green-200 text-green-900 flex items-center justify-center py-2 px-4">
         <AlertTriangle className="h-5 w-5 mr-2" />
         <p className="text-sm font-semibold">
@@ -44,7 +44,7 @@ export default function Navbar() {
           {copied && <span className="ml-2 text-xs">(Copied!)</span>}
         </p>
       </div>
-
+ */}
       {/* Navigation Bar */}
       <nav className="bg-white/80 dark:bg-neutral-950 backdrop-blur-md">
         <div className="container mx-auto px-4">
