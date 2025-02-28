@@ -47,7 +47,7 @@ export const metadata: Metadata = {
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
     images:    
     {
-      url: "https://ez1.dev/web-app-manifest-192x192.png",
+      url: "https://ez1.dev/social_preview_index.png",
       width: 512,
       height: 512,
       alt: "ez1 Logo",
