@@ -19,7 +19,7 @@ export default function Home() {
         </section>
 
         {/* Endorsement Section */}
-        <EndorsementSection />
+        {/* <EndorsementSection /> */}
 
         {/* AI Website Generation Section */}
         <AIWebsiteSection />
@@ -34,7 +34,7 @@ export default function Home() {
         <Web3ToggleSection />
 
         {/* Client Feedback Section */}
-        <ClientFeedbackSection />
+        {/* <ClientFeedbackSection /> */}
       </main>
       <Footer />
     </div>
