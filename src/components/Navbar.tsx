@@ -37,8 +37,8 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <a href="/" className="block">
                 <Image
-                  width={96}
-                  height={96}
+                  width={128}
+                  height={128}
                   src={
                     // theme === "dark" ? "/emblem-white.png" : "/emblem.png"
                     // theme === "dark" ? "/logo-dark.png" : "/logo-dark.png"
@@ -47,7 +47,7 @@ export default function Navbar() {
                       : "/logo-light-styled.png"
                   }
                   alt="Ez1 Logo"
-                  className="w-[96px] h-[96px] object-contain p-5"
+                  className="object-contain p-5"
                   priority
                 />
               </a>
