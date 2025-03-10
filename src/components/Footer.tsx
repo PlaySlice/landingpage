@@ -1,4 +1,4 @@
-import { Twitter, Send, Youtube } from "lucide-react"
+import { Twitter, Send, Youtube, BarChart } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -16,6 +16,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              title="Twitter"
             >
               <Twitter className="h-4 w-4" />
             </a>
@@ -24,6 +25,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              title="Telegram"
             >
               <Send className="h-4 w-4" />
             </a>
@@ -32,18 +34,22 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              title="YouTube"
             >
               <Youtube className="h-4 w-4" />
             </a>
-     {/*        <button
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded"
-              // You can add an onClick handler here if needed
+            <a
+              href="https://dexscreener.com/solana/cedoapevhivr96swkvb2ebr8ick1ax1dwb2ygjqtz4gd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-700 dark:text-white hover:text-neutral-900 dark:hover:text-white/80"
+              title="DexScreener"
             >
-              Subscribe
-            </button> */}
+              <BarChart className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
