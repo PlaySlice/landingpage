@@ -144,17 +144,6 @@ const AutoDeploySection = () => {
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 rounded-full opacity-20 dark:opacity-30"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-indigo-600 rounded-full opacity-20 dark:opacity-30"></div>
             </div>
-
-            {/* Netlify logo */}
-            <div className="absolute -bottom-6 -right-6 bg-white dark:bg-neutral-800 shadow-lg rounded-full p-4">
-              <Image
-                src="/netlify-logo.png"
-                alt="Netlify"
-                width={60}
-                height={60}
-                className="w-12 h-12 object-contain"
-              />
-            </div>
           </motion.div>
         </div>
       </div>

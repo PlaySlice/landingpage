@@ -67,12 +67,15 @@ const AIWebsiteSection = () => {
             className="rounded-2xl overflow-hidden shadow-2xl shadow-neutral-200/50 dark:shadow-neutral-900/50"
           >
             <div className="relative aspect-[16/10] bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-900">
-              <Image
-                src="/ai-website-demo.png"
-                alt="AI Website Generator Demo"
-                fill
-                className="object-cover"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/video.mp4" type="video/mp4" />
+              </video>
             </div>
           </motion.div>
 

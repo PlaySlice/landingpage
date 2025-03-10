@@ -13,22 +13,38 @@ const PromptEnhancerSection = () => {
     "Create a responsive landing page for a cutting-edge tech startup with a modern, clean design using a color palette of navy blue, white, and subtle teal accents. Include a hero section with a compelling headline, animated features section, testimonial carousel, pricing comparison table, and contact form with validation. Optimize for mobile devices and ensure accessibility compliance."
   );
 
+  const examples = [
+    {
+      basic: "Create a landing page for a tech startup",
+      enhanced:
+        "Create a responsive landing page for a cutting-edge tech startup with a modern, clean design using a color palette of navy blue, white, and subtle teal accents. Include a hero section with a compelling headline, animated features section, testimonial carousel, pricing comparison table, and contact form with validation. Optimize for mobile devices and ensure accessibility compliance.",
+    },
+    {
+      basic:
+        "Design a user-friendly mobile app for managing daily tasks and reminders",
+      enhanced:
+        "Design a user-friendly mobile app for managing daily tasks and reminders with an intuitive interface using a minimalist aesthetic. Implement features like drag-and-drop task prioritization, customizable categories with color coding, smart reminders based on location and time patterns, progress visualization with weekly/monthly reports, and seamless cloud sync across devices. Ensure dark mode support, haptic feedback for interactions, and accessibility features for diverse users.",
+    },
+    {
+      basic: "Build an e-commerce website for a fashion brand",
+      enhanced:
+        "Build a high-performance e-commerce website for a luxury fashion brand featuring a sophisticated design with a monochromatic color scheme. Implement advanced filtering and search capabilities, size guide with measurements, 360-degree product views, virtual try-on using AR, personalized recommendations based on browsing history, seamless checkout with multiple payment options, and inventory tracking system. Ensure mobile responsiveness, fast loading times, and secure payment processing.",
+    },
+    {
+      basic: "Create a social media dashboard",
+      enhanced:
+        "Create a comprehensive social media analytics dashboard with real-time data visualization, featuring customizable widgets for key metrics across multiple platforms. Include sentiment analysis of mentions, engagement rate tracking, competitor comparison tools, automated report generation, and predictive analytics for optimal posting times. Implement responsive design with dark/light modes, data export capabilities, and role-based access control.",
+    },
+  ];
+
   const handleEnhanceDemo = () => {
-    // In a real implementation, this would call an API to enhance the prompt
-    // For demo purposes, we'll just toggle between the two
-    if (samplePrompt.length > 40) {
-      setSamplePrompt("Create a landing page for a tech startup");
-      setEnhancedPrompt(
-        "Create a responsive landing page for a cutting-edge tech startup with a modern, clean design using a color palette of navy blue, white, and subtle teal accents. Include a hero section with a compelling headline, animated features section, testimonial carousel, pricing comparison table, and contact form with validation. Optimize for mobile devices and ensure accessibility compliance."
-      );
-    } else {
-      setSamplePrompt(
-        "Design a user-friendly mobile app for managing daily tasks and reminders"
-      );
-      setEnhancedPrompt(
-        "Design a user-friendly mobile app for managing daily tasks and reminders with an intuitive interface using a minimalist aesthetic. Implement features like drag-and-drop task prioritization, customizable categories with color coding, smart reminders based on location and time patterns, progress visualization with weekly/monthly reports, and seamless cloud sync across devices. Ensure dark mode support, haptic feedback for interactions, and accessibility features for diverse users."
-      );
-    }
+    // Find current example index
+    const currentIndex = examples.findIndex((ex) => ex.basic === samplePrompt);
+    // Get next example (loop back to start if at end)
+    const nextIndex = (currentIndex + 1) % examples.length;
+
+    setSamplePrompt(examples[nextIndex].basic);
+    setEnhancedPrompt(examples[nextIndex].enhanced);
   };
 
   return (
@@ -59,6 +75,16 @@ const PromptEnhancerSection = () => {
           >
             Transform simple ideas into detailed, powerful prompts that get the
             most out of any AI model.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-xs italic text-neutral-500 dark:text-neutral-500 mt-2"
+          >
+            Note: These are example prompts for demonstration purposes only and
+            are not currently being processed by AI.
           </motion.p>
         </div>
 

@@ -41,9 +41,10 @@ export default function Navbar() {
                   height={96}
                   src={
                     // theme === "dark" ? "/emblem-white.png" : "/emblem.png"
-                    theme === "dark" ? "/logo-white.png" : "/logo.png"
-                    // ? "/logo-dark-styled.png"
-                    // : "/logo-light-styled.png"
+                    // theme === "dark" ? "/logo-dark.png" : "/logo-dark.png"
+                    theme === "dark"
+                      ? "/logo-dark-styled.png"
+                      : "/logo-light-styled.png"
                   }
                   alt="Ez1 Logo"
                   className="w-[96px] h-[96px] object-contain p-5"
