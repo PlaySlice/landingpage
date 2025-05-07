@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Twitter, ExternalLink } from "lucide-react";
+import AnimatedStarsBackground from "@/components/AnimatedStarsBackground";
 
 const EndorsementSection = () => {
   return (
-    <section className="py-16 bg-blue-50 dark:bg-blue-950/30">
+    <section className="py-16 bg-blue-50 dark:bg-blue-950/30 relative overflow-hidden">
+      <AnimatedStarsBackground />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

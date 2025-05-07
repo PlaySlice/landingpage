@@ -4,8 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Wand2 } from "lucide-react";
+import AnimatedStarsBackground from "@/components/AnimatedStarsBackground";
 
-const PromptEnhancerSection = () => {
+const PromptEnhancerSection = ({ isWeb3 }: { isWeb3?: boolean }) => {
   const [samplePrompt, setSamplePrompt] = useState(
     "Create a landing page for a tech startup"
   );
@@ -50,8 +51,9 @@ const PromptEnhancerSection = () => {
   return (
     <section
       id="prompt-enhancer"
-      className="py-24 bg-neutral-50 dark:bg-neutral-900"
+      className={`py-24 ${isWeb3 ? 'bg-gradient-to-b from-[#FF5C3A]/10 via-[#FFB07C]/10 to-[#FF6A4D]/10' : 'bg-neutral-50 dark:bg-neutral-900'}`}
     >
+      <AnimatedStarsBackground />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2
@@ -59,10 +61,11 @@ const PromptEnhancerSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-neutral-900 dark:text-white"
+            className={`text-3xl md:text-4xl font-bold mb-4 tracking-tight ${isWeb3 ? 'text-white drop-shadow-lg' : 'text-neutral-900 dark:text-white'}`}
+            style={isWeb3 ? {textShadow: '0 2px 16px #FF5C3A88'} : {}}
           >
             <span className="inline-flex items-center">
-              <Sparkles className="w-8 h-8 mr-2 text-blue-500" />
+              <Sparkles className={`w-8 h-8 mr-2 ${isWeb3 ? 'text-white drop-shadow' : 'text-blue-500'}`} />
               Model Prompt Enhancer
             </span>
           </motion.h2>
@@ -71,7 +74,7 @@ const PromptEnhancerSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+            className={`text-lg max-w-2xl mx-auto ${isWeb3 ? 'text-white/80' : 'text-neutral-600 dark:text-neutral-400'}`}
           >
             Transform simple ideas into detailed, powerful prompts that get the
             most out of any AI model.
@@ -81,7 +84,7 @@ const PromptEnhancerSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xs italic text-neutral-500 dark:text-neutral-500 mt-2"
+            className={`text-xs italic mt-2 ${isWeb3 ? 'text-white/60' : 'text-neutral-500 dark:text-neutral-500'}`}
           >
             Note: These are example prompts for demonstration purposes only and
             are not currently being processed by AI.
@@ -94,7 +97,7 @@ const PromptEnhancerSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-neutral-800 shadow-xl rounded-2xl overflow-hidden"
+            className={`shadow-xl rounded-2xl overflow-hidden ${isWeb3 ? 'bg-white/80 dark:bg-white/10 border border-white/30' : 'bg-white dark:bg-neutral-800'}`}
           >
             <div className="p-6 md:p-8">
               <div className="mb-8">
