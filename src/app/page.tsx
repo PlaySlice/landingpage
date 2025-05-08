@@ -497,7 +497,7 @@ export default function Home() {
             {[
               { n: "10,000+", label: "Users since launch" },
               { n: "$5M", label: "Market Cap reached" },
-              { n: "4M", label: "Tokens locked for 2 years" },
+              { n: "40M", label: "Tokens locked for 2 years" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.n}
