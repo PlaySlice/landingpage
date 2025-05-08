@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { ExternalLink, Code, Globe, Layers } from "lucide-react";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
+import AnimatedStarsBackground from "@/components/AnimatedStarsBackground";
 
-const Web3ToggleSection = () => {
-  const [isWeb3, setIsWeb3] = useState(false);
+const Web3ToggleSection = ({ isWeb3: isWeb3Prop = undefined }: { isWeb3?: boolean | undefined }) => {
+  const [isWeb3State, setIsWeb3State] = useState(false);
+  const isWeb3 = isWeb3Prop !== undefined ? isWeb3Prop : isWeb3State;
   const [activeTab, setActiveTab] = useState<"create" | "interact" | "deploy">(
     "create"
   );
@@ -72,7 +74,8 @@ const Web3ToggleSection = () => {
   };
 
   return (
-    <section id="web3" className="py-24 bg-white dark:bg-neutral-950">
+    <section id="web3" className={`py-24 ${isWeb3 ? 'bg-gradient-to-b from-[#FF5C3A]/10 via-[#FFB07C]/10 to-[#FF6A4D]/10' : 'bg-white dark:bg-neutral-950'}`}>
+      <AnimatedStarsBackground />
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.div
@@ -80,39 +83,40 @@ const Web3ToggleSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400 mb-4"
+            className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium mb-4 ${isWeb3 ? 'bg-white/20 text-white border border-white/40' : 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400'}`}
           >
             <div className="flex items-center space-x-2">
               <span>Web3 Mode</span>
-              <Switch
-                checked={isWeb3}
-                onCheckedChange={setIsWeb3}
-                className={
-                  isWeb3
-                    ? "data-[state=checked]:bg-purple-600 dark:data-[state=checked]:bg-purple-500"
-                    : ""
-                }
-                aria-label="Toggle Web3 mode"
-              />
+              {isWeb3Prop === undefined && (
+                <Switch
+                  checked={isWeb3}
+                  onCheckedChange={setIsWeb3State}
+                  className={
+                    isWeb3
+                      ? "data-[state=checked]:bg-purple-600 dark:data-[state=checked]:bg-purple-500"
+                      : ""
+                  }
+                  aria-label="Toggle Web3 mode"
+                />
+              )}
             </div>
           </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-neutral-900 dark:text-white"
+            className={`text-3xl md:text-4xl font-bold mb-4 tracking-tight ${isWeb3 ? 'text-white drop-shadow-lg' : 'text-neutral-900 dark:text-white'}`}
+            style={isWeb3 ? {textShadow: '0 2px 16px #FF5C3A88'} : {}}
           >
             {isWeb3 ? "Web3 Toggle Mode" : "Web Development Mode"}
           </motion.h2>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+            className={`text-lg max-w-2xl mx-auto ${isWeb3 ? 'text-white/80' : 'text-neutral-600 dark:text-neutral-400'}`}
           >
             {isWeb3
               ? "Seamlessly create Solana programs and web interfaces with a simple toggle. No Rust or Web3 experience required."
