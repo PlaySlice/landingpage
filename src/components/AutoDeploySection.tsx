@@ -138,7 +138,7 @@ const AutoDeploySection = ({ isWeb3 = false }) => {
                       ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D] text-[#18181b] border border-[#18181b]/10"
                       : "bg-blue-600 hover:bg-blue-700 text-white"
                   }`}
-                  onClick={() => window.open("https://ez1new.pages.dev", "_blank")}
+                  onClick={() => window.open("https:/ai.ez1.dev/", "_blank")}
                 >
                   Try Deploy On Solana
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -218,7 +218,7 @@ const AutoDeploySection = ({ isWeb3 = false }) => {
                         <span className="text-white">
                           Front-end deployed at:<br />
                           <span className={`italic underline cursor-pointer ${isWeb3 ? "text-[#FF5C3A]" : "text-blue-400"}`}>
-                            https://ez1new.pages.dev
+                            https:/ai.ez1.dev/
                           </span>
                         </span>
                       </motion.div>

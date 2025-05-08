@@ -126,7 +126,7 @@ export default function Home() {
   }, [isWeb3]);
 
   return (
-    <div className={`min-h-screen flex flex-col overflow-x-hidden transition-colors duration-700 ${
+    <div className={`min-h-screen flex flex-col transition-colors duration-700  ${
       isWeb3 
         ? "bg-gradient-to-b from-[#FF5C3A] via-[#FFB07C] to-[#FF6A4D]" 
         : "bg-gradient-to-b from-neutral-900 via-neutral-950 to-black"

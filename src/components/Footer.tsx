@@ -27,7 +27,7 @@ export default function Footer({ isWeb3 = false }) {
         }}
       >
         <div className="container mx-auto px-2 xs:px-3 sm:px-6 md:px-10 lg:px-16">
-          <div className="flex flex-col xs:flex-row justify-between items-center py-3 xs:py-0 space-y-2 xs:space-y-0 xs:h-10 sm:h-12 md:h-16 lg:h-20">
+          <div className="flex flex-col gap-10 xs:flex-row justify-between items-center py-3 xs:py-0 space-y-2 xs:space-y-0 xs:h-10 sm:h-12 md:h-16 lg:h-20">
             <div className="pl-1 sm:pl-0">
               <p className={`text-2xs xs:text-xs sm:text-sm md:text-base font-medium ${isWeb3 ? "text-black" : "text-white"}`}>
                 © 2025 Ez1. All rights reserved.

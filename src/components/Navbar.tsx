@@ -50,7 +50,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="backdrop-blur-lg sticky top-2 xs:top-3 sm:top-5 z-50 rounded-xl xs:rounded-2xl sm:rounded-3xl sm:min-w-[30vh] md:min-w-[40vh] lg:min-w-[70vh]   m-1.5 xs:m-2 sm:m-4 border border-black/20 shadow-lg shadow-black/30"
+        className=" backdrop-blur-lg sticky top-2 xs:top-3 sm:top-5 z-50 rounded-xl xs:rounded-2xl sm:rounded-3xl sm:min-w-[30vh] md:min-w-[40vh] lg:min-w-[70vh] m-1.5 xs:m-2 sm:m-4 border border-black/20 shadow-lg shadow-black/30"
         style={{
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
@@ -71,7 +71,7 @@ export default function Navbar() {
                   height={32}
                   src="/new_logo.png"
                   alt="Ez1 Logo"
-                  className="object-contain py-2 w-16 xs:w-20 sm:w-auto"
+                  className="object-contain py-2 w-18 h-20 xs:w-22 sm:w-auto"
                   priority
                 />
               </motion.a>
