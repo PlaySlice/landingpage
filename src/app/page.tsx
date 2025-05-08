@@ -62,16 +62,40 @@ const card3D = {
 export default function Home() {
   const [showScroll, setShowScroll] = useState(true);
   const [isWeb3, setIsWeb3] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [starBurst, setStarBurst] = useState(false);
+
+  // Toggle video playback
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play().catch(e => console.error("Video play error:", e));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  // Toggle video sound
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
 
   useEffect(() => {
     // Handle video playback based on Web3 mode
     if (videoRef.current) {
       if (isWeb3) {
         videoRef.current.play().catch(e => console.error("Video play error:", e));
+        setIsPlaying(true);
       } else {
         videoRef.current.pause();
+        setIsPlaying(false);
       }
     }
 
@@ -102,13 +126,13 @@ export default function Home() {
   }, [isWeb3]);
 
   return (
-    <div className={`min-h-screen flex flex-col transition-colors duration-700 ${
+    <div className={`min-h-screen flex flex-col overflow-x-hidden transition-colors duration-700 ${
       isWeb3 
         ? "bg-gradient-to-b from-[#FF5C3A] via-[#FFB07C] to-[#FF6A4D]" 
         : "bg-gradient-to-b from-neutral-900 via-neutral-950 to-black"
     }`}>
       <Navbar />
-      <main className="flex-grow flex flex-col">
+      <main className="flex-grow flex flex-col px-2 sm:px-4 md:px-6">
         {/* Hero Section */}
         <section className="h-screen flex flex-col items-center justify-center ">
           {/* Animated stars with burst effect */}
@@ -145,15 +169,15 @@ export default function Home() {
           >
             <motion.h1
               variants={fadeUp}
-              className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tighter leading-[1.2] ${isWeb3 ? "text-[#18181b]" : "text-white"} text-center drop-shadow-lg`}
+              className={`text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 tracking-tighter leading-[1.2] ${isWeb3 ? "text-[#18181b]" : "text-white"} text-center drop-shadow-lg px-3 sm:px-4`}
             >
               The First AI Tool to Deploy on Solana
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className={`text-lg md:text-2xl ${isWeb3 ? "text-[#18181b]/80" : "text-white/80"} mb-8 text-center max-w-2xl`}
+              className={`text-sm xs:text-base sm:text-lg md:text-2xl ${isWeb3 ? "text-[#18181b]/80" : "text-white/80"} mb-4 sm:mb-6 md:mb-8 text-center max-w-2xl px-3 sm:px-4 md:px-6`}
             >
-              Instantly deploy your dApp on Solana. No code. No limits. <br />
+              Instantly deploy your dApp on Solana. No code. No limits. <br className="hidden sm:block" />
               <span className={`font-semibold ${isWeb3 ? "text-[#FF5C3A]" : "text-blue-400"}`}>
                 Be the first to use AI-powered Solana deployment.
               </span>
@@ -161,11 +185,11 @@ export default function Home() {
             {/* Toggle Button */}
             <motion.div
               variants={fadeUp}
-              className="flex items-center justify-center mb-8"
+              className="flex items-center justify-center mb-5 sm:mb-6 md:mb-8 scale-90 sm:scale-100"
             >
-              <span className={`text-xl font-semibold mr-4 ${!isWeb3 ? "text-white" : "text-[#18181b]/80"}`}>Normal</span>
+              <span className={`text-lg sm:text-xl font-semibold mr-3 sm:mr-4 ${!isWeb3 ? "text-white" : "text-[#18181b]/80"}`}>Normal</span>
               <button
-                className={`w-32 h-16 rounded-full flex items-center transition-colors duration-500 focus:outline-none border-4 ${
+                className={`w-20 xs:w-24 sm:w-32 h-10 xs:h-12 sm:h-16 rounded-full flex items-center transition-colors duration-500 focus:outline-none border-3 xs:border-4 ${
                   isWeb3
                     ? "border-black/70 bg-gradient-to-r from-red-200/20 to-red-600/30 backdrop-blur-sm"
                     : "border-blue-500/20 bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm "
@@ -175,17 +199,17 @@ export default function Home() {
               >
                 {isWeb3 ? (
                   <motion.div
-                    className="w-14 h-12 rounded-full shadow-lg flex items-center justify-center text-lg font-bold bg-[#FF5C3A] text-white"
-                    animate={{ x: 64 }}
+                    className="w-8 h-7 xs:w-10 xs:h-9 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center text-lg font-bold bg-[#FF5C3A] text-white"
+                    animate={{ x: 56 }}
                     initial={{ x: 0 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 22 }}
                     style={{ boxShadow: '0 2px 12px 0 #FF5C3A33' }}
                   />
                 ) : (
                   <motion.div
-                    className="w-14 h-12 rounded-full shadow-lg flex items-center justify-center text-lg font-bold bg-blue-600 text-white"
+                    className="w-8 h-7 xs:w-10 xs:h-9 sm:w-14 sm:h-12 rounded-full shadow-lg flex items-center justify-center text-lg font-bold bg-blue-600 text-white"
                     animate={{ 
-                      x: [0, 20, 0],
+                      x: [0, 12, 0],
                       scale: [1, 1.05, 1],
                       boxShadow: [
                         '0 2px 12px 0 rgba(37, 99, 235, 0.3)',
@@ -213,7 +237,7 @@ export default function Home() {
                   </motion.div>
                 )}
               </button>
-              <span className={`text-xl font-semibold ml-4 ${isWeb3 ? "text-[#18181b]" : "text-white/60"}`}>Web3</span>
+              <span className={`text-lg sm:text-xl font-semibold ml-3 sm:ml-4 ${isWeb3 ? "text-[#18181b]" : "text-white/60"}`}>Web3</span>
             </motion.div>
             {/* Video/Card with 3D effect */}
             <AnimatePresence mode="wait">
@@ -224,20 +248,65 @@ export default function Home() {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="w-full max-w-3xl mx-auto mb-12 rounded-3xl overflow-hidden shadow-4xl"
+                  className="relative w-full max-w-3xl mx-auto mb-12 rounded-3xl overflow-hidden shadow-4xl"
                   style={{boxShadow: '0 20px 50px 0 rgba(0, 0, 0, 0.51)'}}
                 >
                   <video
                     ref={videoRef}
-                    className="w-full aspect-video object-cover "
+                    className="w-full aspect-video object-cover"
                     playsInline
                     loop
-                    muted
+                    muted={isMuted}
                     autoPlay
+                    onClick={togglePlay}
                   >
                     <source src="/EZ1.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
+                  {/* Video controls */}
+                  <div className="absolute bottom-4 right-4 flex space-x-2">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        togglePlay();
+                      }}
+                      className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center hover:bg-black/70 transition-colors"
+                      aria-label={isPlaying ? "Pause video" : "Play video"}
+                    >
+                      {isPlaying ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="6" y="4" width="4" height="16"></rect>
+                          <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      )}
+                    </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMute();
+                      }}
+                      className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center hover:bg-black/70 transition-colors"
+                      aria-label={isMuted ? "Unmute video" : "Mute video"}
+                    >
+                      {isMuted ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                          <line x1="23" y1="9" x2="17" y2="15"></line>
+                          <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+                      )}
+                    </button>
+                  </div>
                 </motion.div>
               ) : (
                 <motion.div
@@ -293,7 +362,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
               viewport={{ once: true }}
-              className={`text-4xl md:text-6xl font-extrabold tracking-tight mb-4 ${isWeb3 ? 'text-[#18181b]' : 'text-blue-400'} drop-shadow-lg text-center`}
+              className={`text-3xl xs:text-4xl md:text-6xl font-extrabold tracking-tight mb-3 sm:mb-4 ${isWeb3 ? 'text-[#18181b]' : 'text-blue-400'} drop-shadow-lg text-center px-3 sm:px-4`}
               style={isWeb3 ? {textShadow: '0 2px 16px rgba(255, 91, 58, 0.29)'} : {}}
             >
               Trusted by the Solana Community
@@ -312,8 +381,8 @@ export default function Home() {
               }}
             />
               </div>
-          <div className="max-w-6xl w-full px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center mb-16">
-            {[{n: '5,000+', label: 'Users since launch'}, {n: '$5M', label: 'Market Cap reached'}, {n: '4M', label: 'Tokens locked for 2 years'}].map((stat, i) => (
+          <div className="max-w-6xl w-full px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center mb-16">
+            {[{n: '10,000+', label: 'Users since launch'}, {n: '$5M', label: 'Market Cap reached'}, {n: '4M', label: 'Tokens locked for 2 years'}].map((stat, i) => (
               <motion.div
                 key={stat.n}
                 initial={{ opacity: 0, y: 40 }}
@@ -321,25 +390,22 @@ export default function Home() {
                 transition={{ duration: 0.3, delay: 0.2 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.10)' }}
-                className={`flex flex-col items-center justify-center rounded-3xl shadow-xl transition-all duration-100 bg-white/20 dark:bg-white/5 backdrop-blur-md py-12 px-6 mx-auto max-w-xs ${isWeb3 ? 'border border-white/10' : 'border border-blue-400/10'}`}
+                className={`flex flex-col items-center justify-center rounded-xl xs:rounded-2xl sm:rounded-3xl shadow-xl transition-all duration-100 bg-white/20 dark:bg-white/5 backdrop-blur-md py-8 xs:py-10 sm:py-12 px-4 xs:px-5 sm:px-6 w-full mx-auto ${isWeb3 ? 'border border-white/10' : 'border border-blue-400/10'}`}
                 style={{
                   boxShadow: isWeb3
                     ? '0 8px 32px 0 rgba(255, 91, 58, 0.27)'
                     : '0 8px 32px 0 rgba(37,99,235,0.10)'
                 }}
               >
-                <span className={`text-5xl md:text-6xl font-extrabold drop-shadow-lg bg-clip-text text-transparent ${isWeb3 ? 'bg-gradient-to-r from-[#18181b] to-[#FF5C3A]' : 'bg-gradient-to-r from-blue-900 to-blue-400'}`}>{stat.n}</span>
-                <span className="text-2xl mt-4 font-medium" style={{color: isWeb3 ? '#18181b' : 'rgb(178, 178, 178)'}}>{stat.label}</span>
+                <span className={`text-4xl xs:text-5xl md:text-6xl font-extrabold drop-shadow-lg bg-clip-text text-transparent ${isWeb3 ? 'bg-gradient-to-r from-[#18181b] to-[#FF5C3A]' : 'bg-gradient-to-r from-blue-900 to-blue-400'}`}>{stat.n}</span>
+                <span className="text-xl xs:text-2xl mt-3 xs:mt-4 font-medium" style={{color: isWeb3 ? '#18181b' : 'rgb(178, 178, 178)'}}>{stat.label}</span>
               </motion.div>
             ))}
             </div>
-          <div className="max-w-5xl w-full px-4 mt-8 grid grid-cols-1 md:grid-cols-2 gap-12 text-center">
+          <div className="flex flex-col items-center justify-center max-w-5xl w-full px-4 sm:px-6 mt-8 grid grid-cols-1 md:grid-cols-1 gap-12 text-center">
             {[{
               label: 'Followed by',
               value: 'Anatoly (Solana Co-founder)'
-            }, {
-              label: 'Innovation',
-              value: 'Deploy on Solana platform'
             }].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -363,9 +429,9 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1 }}
             viewport={{ once: true }}
-            className="w-full flex justify-center mt-20"
+            className="w-full flex justify-center mt-12 sm:mt-16 md:mt-20"
           >
-            <span className={`inline-block ${isWeb3 ? "text-[#18181b]" : "text-white"} text-lg font-semibold rounded-full px-8 py-4 shadow-lg transition-all duration-300 ${
+            <span className={`inline-flex items-center justify-center ${isWeb3 ? "text-[#18181b]" : "text-white"} text-sm xs:text-base sm:text-lg font-semibold rounded-3xl xs:rounded-full sm:rounded-full px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 shadow-lg transition-all duration-300 scale-90 xs:scale-95 sm:scale-100 text-center ${
               isWeb3 ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D]" : "bg-gradient-to-r from-blue-600 to-blue-400"
             }`} style={{boxShadow: isWeb3 ? '0 4px 24px 0 #FF5C3A33' : '0 4px 24px 0 #2563eb33'}}>
               First AI Solana Tool to offer Deploy on Solana
