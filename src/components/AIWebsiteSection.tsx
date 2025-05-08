@@ -411,7 +411,7 @@ const AIWebsiteSection = ({ isWeb3 = false }) => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  onClick={() => window.open("https:/ai.ez1.dev/", "_blank")}
+                  onClick={() => window.open("https://ai.ez1.dev/", "_blank")}
                   className={`rounded-xl px-6 py-3 text-base font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                     isWeb3
                       ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D] text-[#18181b] border border-[#18181b]/10"

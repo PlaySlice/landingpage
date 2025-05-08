@@ -195,7 +195,7 @@ const NetlifyDeploySection = ({ isWeb3 = false }) => {
                       ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D] text-[#18181b] border border-[#18181b]/10"
                       : "bg-blue-600 hover:bg-blue-700 text-white"
                   }`}
-                  onClick={() => window.open("https:/ai.ez1.dev/", "_blank")}
+                  onClick={() => window.open("https://ai.ez1.dev/", "_blank")}
                 >
                   Try Deploy On Netlify
                   <ArrowRight className="ml-2 w-4 h-4" />
