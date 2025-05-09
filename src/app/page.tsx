@@ -448,7 +448,7 @@ export default function Home() {
                 transition={{ delay: 0.3 }}
                 className={`inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 mt-4 ${
                   isWeb3
-                    ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D]"
+                    ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D] border border-black"
                     : "bg-gradient-to-r from-blue-600 to-blue-400"
                 }`}
                 style={{

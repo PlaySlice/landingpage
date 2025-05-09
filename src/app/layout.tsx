@@ -45,8 +45,7 @@ export const metadata: Metadata = {
     title: "ez1 - Dream It, Build It.",
     description:
       "Build and create projects effortlessly with ez1, your intelligent AI agent companion for development and innovation.",
-    images:    
-    {
+    images: {
       url: "https://ez1.dev/social_preview_index.png",
       width: 512,
       height: 512,
@@ -57,27 +56,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://ez1.dev/social_preview_index.png",
-        type: "image/png",
+        url: "https://ez1.dev/favicon.ico",
+        type: "image/x-icon",
       },
       {
-        url: "https://ez1.dev/social_preview_index.png",
-        sizes: "16x16",
-        type: "image/png",
-      },
-      {
-        url: "https://ez1.dev/social_preview_index.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-      {
-        url: "https://ez1.dev/social_preview_index.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        url: "https://ez1.dev/social_preview_index.png",
-        sizes: "512x512",
+        url: "https://ez1.dev/favicon-96x96.png",
+        sizes: "96x96",
         type: "image/png",
       },
     ],
@@ -95,7 +79,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0',
+  viewport:
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
 };
 
 export default function RootLayout({
@@ -106,7 +91,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>
