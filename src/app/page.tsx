@@ -438,6 +438,40 @@ export default function Home() {
                   </div>
                 </motion.div>
               )}
+              {/* Launch App CTA Button */}
+              <motion.a
+                href="https://ai.ez1.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className={`inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 mt-4 ${
+                  isWeb3
+                    ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D]"
+                    : "bg-gradient-to-r from-blue-600 to-blue-400"
+                }`}
+                style={{
+                  boxShadow: isWeb3
+                    ? "0 4px 24px 0 rgba(255, 91, 58, 0.3)"
+                    : "0 4px 24px 0 rgba(37, 99, 235, 0.3)",
+                }}
+              >
+                Launch App
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </motion.a>
             </AnimatePresence>
           </motion.div>
         </section>
