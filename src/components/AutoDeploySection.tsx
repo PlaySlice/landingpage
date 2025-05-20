@@ -55,7 +55,7 @@ const AutoDeploySection = ({ isWeb3 = false }) => {
   return (
     <section 
       ref={sectionRef}
-      className="py-32 relative overflow-hidden bg-[#FF5C3A]/5"
+      className="py-32 relative overflow-hidden bg-[#FF5C3A]/4"
     >
       <AnimatedStarsBackground />
 
