@@ -2,8 +2,14 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import AnimatedStarsBackground from "./AnimatedStarsBackground";
 
+// Define types for the animated icon components
+interface AnimatedIconProps {
+  paths: string[];
+  isWeb3: boolean;
+}
+
 // Icons with animated variants using SVG paths
-const AnimatedIcon = ({ paths, isWeb3 }) => {
+const AnimatedIcon = ({ paths, isWeb3 }: AnimatedIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +22,7 @@ const AnimatedIcon = ({ paths, isWeb3 }) => {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      {paths.map((d, i) => (
+      {paths.map((d: string, i: number) => (
         <motion.path
           key={i}
           d={d}
@@ -36,8 +42,12 @@ const AnimatedIcon = ({ paths, isWeb3 }) => {
   );
 };
 
+interface IconProps {
+  isWeb3: boolean;
+}
+
 // Enhanced animated icons
-const RevenueIcon = ({ isWeb3 }) => (
+const RevenueIcon = ({ isWeb3 }: IconProps) => (
   <AnimatedIcon
     isWeb3={isWeb3}
     paths={[
@@ -47,7 +57,7 @@ const RevenueIcon = ({ isWeb3 }) => (
   />
 );
 
-const OptimizationIcon = ({ isWeb3 }) => (
+const OptimizationIcon = ({ isWeb3 }: IconProps) => (
   <AnimatedIcon
     isWeb3={isWeb3}
     paths={[
@@ -58,7 +68,7 @@ const OptimizationIcon = ({ isWeb3 }) => (
   />
 );
 
-const TokenIcon = ({ isWeb3 }) => (
+const TokenIcon = ({ isWeb3 }: IconProps) => (
   <AnimatedIcon
     isWeb3={isWeb3}
     paths={[
@@ -68,7 +78,7 @@ const TokenIcon = ({ isWeb3 }) => (
   />
 );
 
-const BlockchainIcon = ({ isWeb3 }) => (
+const BlockchainIcon = ({ isWeb3 }: IconProps) => (
   <AnimatedIcon
     isWeb3={isWeb3}
     paths={[
@@ -80,7 +90,7 @@ const BlockchainIcon = ({ isWeb3 }) => (
   />
 );
 
-const PromptIcon = ({ isWeb3 }) => (
+const PromptIcon = ({ isWeb3 }: IconProps) => (
   <AnimatedIcon
     isWeb3={isWeb3}
     paths={[
@@ -101,35 +111,35 @@ const roadmapItems = [
   {
     title: "Revenue Sharing",
     description: "Introducing a revolutionary revenue sharing model that rewards community members and contributors based on participation and stake.",
-    icon: (isWeb3) => <RevenueIcon isWeb3={isWeb3} />,
+    icon: (isWeb3: boolean) => <RevenueIcon isWeb3={isWeb3} />,
     phase: "Phase 1",
     color: "#FF5C3A"
   },
   {
     title: "Optimization & Templates",
     description: "Enhanced AI optimization models and premium templates designed for instant deployment and frictionless building experience.",
-    icon: (isWeb3) => <OptimizationIcon isWeb3={isWeb3} />,
+    icon: (isWeb3: boolean) => <OptimizationIcon isWeb3={isWeb3} />,
     phase: "Phase 2",
     color: "#FF7A4D"
   },
   {
     title: "Token Launch Integration",
     description: "Seamless token launch capabilities with integrated liquidity management and distribution systems directly on the platform.",
-    icon: (isWeb3) => <TokenIcon isWeb3={isWeb3} />,
+    icon: (isWeb3: boolean) => <TokenIcon isWeb3={isWeb3} />,
     phase: "Phase 3",
     color: "#FF9674"
   },
   {
     title: "Multi-Blockchain Support",
     description: "Extending our deployment capabilities to support multiple blockchain ecosystems with cross-chain interoperability.",
-    icon: (isWeb3) => <BlockchainIcon isWeb3={isWeb3} />,
+    icon: (isWeb3: boolean) => <BlockchainIcon isWeb3={isWeb3} />,
     phase: "Phase 4",
     color: "#FFB092"
   },
   {
     title: "End Product Generation",
     description: "Advanced AI prompt system that directly generates fully-optimized, production-ready end products with minimal input required.",
-    icon: (isWeb3) => <PromptIcon isWeb3={isWeb3} />,
+    icon: (isWeb3: boolean) => <PromptIcon isWeb3={isWeb3} />,
     phase: "Phase 5",
     color: "#FFCAB0"
   }
@@ -333,7 +343,7 @@ const RoadmapSection = ({ isWeb3 = false }) => {
       rotateY: 180,
       rotateX: 45
     },
-    visible: (i) => ({ 
+    visible: (i: number) => ({ 
       scale: 1, 
       opacity: 1, 
       rotateY: 0,
@@ -366,7 +376,7 @@ const RoadmapSection = ({ isWeb3 = false }) => {
       scale: 0.95,
       filter: "blur(5px)"
     },
-    visible: (i) => ({ 
+    visible: (i: number) => ({ 
       opacity: 1, 
       y: 0, 
       x: 0,
