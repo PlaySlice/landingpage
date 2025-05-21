@@ -156,20 +156,20 @@ interface Particle {
   opacity: number;
 }
 
-// Enhanced particle system with more varied particles
+// Simplified version of the EnhancedParticles component with fewer particles
 const EnhancedParticles = ({ isWeb3 }: { isWeb3: boolean }) => {
   const [particles, setParticles] = useState<Particle[]>([]);
   
   useEffect(() => {
-    const particleCount = 25;
+    const particleCount = 10; // Reduced from 25
     const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 5 + 1,
-      duration: Math.random() * 25 + 15,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.3 + 0.1
+      size: Math.random() * 4 + 1,
+      duration: Math.random() * 20 + 15, 
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.2 + 0.1
     }));
     setParticles(newParticles);
   }, []);
@@ -181,28 +181,25 @@ const EnhancedParticles = ({ isWeb3 }: { isWeb3: boolean }) => {
           key={particle.id}
           className={`absolute rounded-full ${
             isWeb3 
-              ? `bg-gradient-to-br from-[${particle.id % 2 === 0 ? "#FF5C3A" : "#FFB07C"}] to-[${particle.id % 3 === 0 ? "#FF6A4D" : "#FFCAB0"}]` 
-              : `bg-gradient-to-br from-[${particle.id % 2 === 0 ? "#2563eb" : "#60a5fa"}] to-[${particle.id % 3 === 0 ? "#3b82f6" : "#93c5fd"}]`
+              ? `bg-[${particle.id % 2 === 0 ? "#FF5C3A" : "#FFB07C"}]` 
+              : `bg-[${particle.id % 2 === 0 ? "#2563eb" : "#60a5fa"}]`
           }`}
           style={{
             width: particle.size,
             height: particle.size,
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            opacity: particle.opacity,
-            filter: `blur(${particle.size > 3 ? 1 : 0}px)`
+            opacity: particle.opacity
           }}
           animate={{
-            y: [0, -50, 0],
-            x: [0, Math.random() * 30 - 15, 0],
-            opacity: [particle.opacity, particle.opacity * 1.5, particle.opacity],
-            scale: [1, particle.id % 3 === 0 ? 1.2 : 0.8, 1]
+            y: [0, -30], // Reduced movement
+            opacity: [particle.opacity, particle.opacity * 1.2, particle.opacity]
           }}
           transition={{
             duration: particle.duration,
             repeat: Infinity,
             delay: particle.delay,
-            ease: "easeInOut"
+            ease: "linear" // Simpler easing function
           }}
         />
       ))}
@@ -210,85 +207,22 @@ const EnhancedParticles = ({ isWeb3 }: { isWeb3: boolean }) => {
   );
 };
 
-// Holographic card effect component
-interface HolographicCardProps {
+// Simplified card wrapper component (no 3D effects)
+interface SimpleCardProps {
   children: React.ReactNode;
   isWeb3: boolean;
   className?: string;
 }
 
-const HolographicCard = ({ children, isWeb3, className = "" }: HolographicCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [mouseOver, setMouseOver] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const percentX = (e.clientX - centerX) / (rect.width / 2);
-    const percentY = -((e.clientY - centerY) / (rect.height / 2));
-    
-    setRotateX(percentY * 5); // Reduced rotation from 10 to 5 degrees
-    setRotateY(percentX * 5);
-  };
-
-  useEffect(() => {
-    if (!mouseOver) {
-      setRotateX(0);
-      setRotateY(0);
-    }
-  }, [mouseOver]);
-
+const SimpleCard = ({ children, isWeb3, className = "" }: SimpleCardProps) => {
   return (
-    <motion.div
-      ref={cardRef}
-      className={`relative ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setMouseOver(true)}
-      onMouseLeave={() => setMouseOver(false)}
-      style={{
-        perspective: "1200px",
-        transformStyle: "preserve-3d"
-      }}
-    >
-      <motion.div
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d"
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 30
-        }}
-        className="w-full h-full relative"
-      >
-        {/* Subtle holographic effect - reduced opacity */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div
-            className={`absolute inset-0 opacity-0 transition-opacity duration-300 ${mouseOver ? 'opacity-30' : ''}`}
-            style={{
-              background: isWeb3
-                ? "linear-gradient(135deg, rgba(255, 92, 58, 0.05) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 176, 124, 0.05) 100%)"
-                : "linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(59, 130, 246, 0.05) 100%)",
-              backgroundSize: "200% 200%",
-              backgroundPosition: `${50 + rotateY * 5}% ${50 - rotateX * 5}%`,
-              borderRadius: "inherit",
-            }}
-          />
-        </div>
-        {children}
-      </motion.div>
-    </motion.div>
+    <div className={`relative ${className}`}>
+      {children}
+    </div>
   );
 };
 
-// Main component
+// Main component with simplified animations
 const RoadmapSection = ({ isWeb3 = false }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, margin: "-10% 0px -10% 0px" });
@@ -297,196 +231,69 @@ const RoadmapSection = ({ isWeb3 = false }) => {
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0.6, 1, 1, 0.6]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.98]); // Reduced scale change
   
-  // Springy motion values for more natural animations
-  const springConfig = { stiffness: 100, damping: 15, mass: 0.5 };
-  const headerY = useSpring(useTransform(scrollYProgress, [0, 0.2], [100, 0]), springConfig);
-  const timelineProgress = useSpring(useTransform(scrollYProgress, [0.1, 0.5], [0, 1]), springConfig);
-  
-  // Premium animation variants
+  // Simplified animation variants
   const titleVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 1
+        duration: 0.5, // Using simpler duration-based animation instead of springs
       }
     }
   };
   
-  const barVariants = {
-    hidden: { scaleX: 0, originX: 0 },
-    visible: {
-      scaleX: 1,
-      transition: {
-        type: "spring",
-        stiffness: 50,
-        damping: 15,
-        mass: 2,
-        delay: 0.3
-      }
-    }
-  };
-  
-  // 3D rotation for phase dots
-  const dotVariants = {
-    hidden: { 
-      scale: 0, 
-      opacity: 0, 
-      rotateY: 180,
-      rotateX: 45
-    },
-    visible: (i: number) => ({ 
-      scale: 1, 
-      opacity: 1, 
-      rotateY: 0,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        stiffness: 130,
-        damping: 15,
-        mass: 1,
-        delay: 0.3 + i * 0.15
-      }
-    }),
-    hover: {
-      scale: 1.2,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 10
-      }
-    }
-  };
-
-  // Card animations with more refined and natural motion
+  // Simplified card animations
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      y: 15, 
-      x: -10, 
-      rotateY: -2, 
-      scale: 0.95,
-      filter: "blur(5px)"
+      y: 10
     },
     visible: (i: number) => ({ 
       opacity: 1, 
-      y: 0, 
-      x: 0,
-      rotateY: 0,
-      scale: 1,
-      filter: "blur(0px)",
+      y: 0,
       transition: {
-        type: "spring",
-        stiffness: 45,  // Lower stiffness for more natural motion
-        damping: 15,    // Adjusted damping for better oscillation
-        mass: 0.8,      // Lower mass for more responsive movement
-        delay: 0.2 + i * 0.15,  // Shorter delays between cards
-        delayChildren: 0.1,
-        staggerChildren: 0.05
+        duration: 0.4,
+        delay: 0.1 + i * 0.1, // Reduced stagger delay
       }
     }),
     hover: {
-      y: -3, 
-      scale: 1.015, 
-      boxShadow: "0 15px 30px rgba(0,0,0,0.07)",
+      y: -3,
       transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-        mass: 0.6  // More responsive hover state
+        duration: 0.2 // Simple duration-based transition
       }
     }
   };
-  
-  // Parallax effect for background elements
-  const parallaxY1 = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const parallaxY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
-  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  
-  // Fancy 3D perspective effect
-  const perspective = useTransform(scrollYProgress, [0, 1], [1200, 800]);
   
   return (
     <section 
       ref={sectionRef}
-      className={`py-32 relative overflow-hidden`}
+      className="py-32 relative overflow-hidden"
     >
       <AnimatedStarsBackground />
       <EnhancedParticles isWeb3={isWeb3} />
 
-      {/* Decorative 3D elements with parallax */}
+      {/* Simplified background elements - fewer animations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          style={{ 
-            y: parallaxY1, 
-            opacity: parallaxOpacity,
-            rotateZ: useTransform(scrollYProgress, [0, 1], [0, 10]),
+        <div
+          className="absolute -right-[15%] top-[25%] w-[60%] h-[50%] rounded-full blur-[80px]"
+          style={{
             background: isWeb3
               ? 'radial-gradient(circle, rgba(255, 92, 58, 0.3) 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)'
           }}
-          className="absolute -right-[15%] top-[25%] w-[60%] h-[50%] rounded-full blur-[80px]"
         />
  
-        <motion.div
-          style={{ 
-            y: parallaxY2, 
-            opacity: parallaxOpacity,
-            rotateZ: useTransform(scrollYProgress, [0, 1], [0, -15]),
+        <div
+          className="absolute -left-[15%] top-[60%] w-[50%] h-[40%] rounded-full blur-[100px]"
+          style={{
             background: isWeb3
               ? 'radial-gradient(circle, rgba(255, 122, 77, 0.25) 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)'
           }}
-          className="absolute -left-[15%] top-[60%] w-[50%] h-[40%] rounded-full blur-[100px]"
-        />
-        
-        {/* Top center subtle glow */}
-        <motion.div
-          style={{ 
-            y: useTransform(scrollYProgress, [0, 1], ["0%", "20%"]),
-            opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]),
-            background: isWeb3
-              ? 'radial-gradient(circle, rgba(255, 202, 176, 0.2) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%)'
-          }}
-          className="absolute left-1/2 -translate-x-1/2 top-[10%] w-[40%] h-[30%] rounded-full blur-[120px]"
-        />
-      </div>
-
-      {/* Enhanced large decorative lights */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Right side large glow */}
-        <motion.div
-          style={{ 
-            y: parallaxY1, 
-            opacity: parallaxOpacity,
-            rotateZ: useTransform(scrollYProgress, [0, 1], [0, 10]),
-            background: isWeb3
-              ? 'radial-gradient(circle, rgba(255, 92, 58, 0.25) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)'
-          }}
-          className="absolute -right-[20%] top-[30%] w-[70%] h-[60%] rounded-full blur-[120px]"
-        />
-        
-        {/* Left side large glow */}
-        <motion.div
-          style={{ 
-            y: parallaxY2, 
-            opacity: parallaxOpacity,
-            rotateZ: useTransform(scrollYProgress, [0, 1], [0, -15]),
-            background: isWeb3
-              ? 'radial-gradient(circle, rgba(255, 122, 77, 0.2) 0%, transparent 70%)'
-              : 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)'
-          }}
-          className="absolute -left-[20%] top-[55%] w-[60%] h-[40%] rounded-full blur-[100px]"
         />
       </div>
 
@@ -495,11 +302,8 @@ const RoadmapSection = ({ isWeb3 = false }) => {
         style={{ opacity, scale }} 
         className="container mx-auto px-4 relative z-10"
       >
-        {/* Header section with premium animations */}
-        <motion.div 
-          className="max-w-6xl mx-auto mb-20"
-          style={{ y: headerY }}
-        >
+        {/* Header section with simpler animations */}
+        <div className="max-w-6xl mx-auto mb-20">
           <div className="w-full flex flex-col items-center mb-12">
             <motion.h2
               variants={titleVariants}
@@ -523,7 +327,7 @@ const RoadmapSection = ({ isWeb3 = false }) => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className={`text-center max-w-3xl mt-6 text-lg ${
                 isWeb3 ? "text-[#18181b]/80" : "text-white/80"
@@ -533,54 +337,31 @@ const RoadmapSection = ({ isWeb3 = false }) => {
             </motion.p>
           </div>
 
-          {/* Premium timeline with 3D and interactive elements */}
+          {/* Simplified timeline */}
           <div className="mt-24 relative">
-            {/* Animated timeline progress */}
-            <motion.div 
+            {/* Simple timeline line instead of animated progress */}
+            <div 
               className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full rounded-full overflow-hidden"
               style={{
                 background: isWeb3
                   ? "linear-gradient(180deg, transparent 5%, #FF5C3A, transparent 95%)"
                   : "linear-gradient(180deg, transparent 5%, #2563eb, transparent 95%)",
-                opacity: 0.3,
-                scaleY: timelineProgress,
-                transformOrigin: "top"
+                opacity: 0.3
               }}
-            >
-              <motion.div
-                className="absolute inset-0 w-full"
-                animate={{
-                  y: ["-100%", "100%"],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
-                  height: "100%",
-                  background: isWeb3
-                    ? "linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
-                    : "linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.8), transparent)",
-                }}
-              />
-            </motion.div>
+            />
 
             {/* Timeline items */}
             <div className="relative space-y-32 md:space-y-48">
               {roadmapItems.map((item, index) => (
                 <div key={index} className="relative flex flex-col md:flex-row items-center">
-                  {/* Timeline center point */}
+                  {/* Timeline center point - simplified */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
-                    {/* 3D rotating phase dot */}
                     <motion.div
-                      variants={dotVariants}
-                      custom={index}
-                      initial="hidden"
-                      whileInView="visible"
-                      whileHover="hover"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.1 * index }}
                       viewport={{ once: true, margin: "-100px" }}
-                      className={`w-20 h-20 rounded-full z-10 flex items-center justify-center overflow-hidden backdrop-blur-sm`}
+                      className="w-20 h-20 rounded-full z-10 flex items-center justify-center overflow-hidden backdrop-blur-sm"
                       style={{
                         background: isWeb3
                           ? `linear-gradient(135deg, #FF5C3ACC, #FF5C3A99)`
@@ -588,52 +369,23 @@ const RoadmapSection = ({ isWeb3 = false }) => {
                         boxShadow: isWeb3
                           ? `0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.3)`
                           : `0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.3)`,
-                        border: isWeb3 ? `1px solid ${item.color}` : "1px solid #3b82f6",
-                        transformStyle: "preserve-3d"
+                        border: isWeb3 ? `1px solid ${item.color}` : "1px solid #3b82f6"
                       }}
                     >
-                      {/* Subtle glass effect */}
-                      <div 
-                        className="absolute inset-0 rounded-full opacity-30"
-                        style={{
-                          background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%)",
-                          borderRadius: "inherit"
-                        }}
-                      />
-                      
-                      {/* Phase number - cleaned up typography */}
-                      <div className="relative z-10 flex flex-col items-center justify-center">
+                      {/* Phase number - simplified */}
+                      <div className="flex flex-col items-center justify-center">
                         <span className="text-sm uppercase tracking-wide font-medium text-white/70 mb-0.5">Phase</span>
                         <span className="text-xl font-semibold text-white"
-                          style={{ 
-                            letterSpacing: "0.02em",
-                          }}
+                          style={{ letterSpacing: "0.02em" }}
                         >
                           {item.phase.split(' ')[1]}
                         </span>
                       </div>
-                      
-                      {/* Subtle ring pulse */}
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.2],
-                          opacity: [0.4, 0]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeOut"
-                        }}
-                        className="absolute inset-0 rounded-full"
-                        style={{
-                          border: isWeb3 ? `1px solid rgba(255, 92, 58, 0.13)` : "1px solid rgba(59, 130, 246, 0.1)",
-                        }}
-                      />
                     </motion.div>
                   </div>
 
-                  {/* Content card */}
-                  <HolographicCard 
+                  {/* Content card - simplified */}
+                  <SimpleCard 
                     isWeb3={isWeb3}
                     className={`w-full md:w-5/12 flex flex-col mb-16 md:mb-0 ${
                       index % 2 === 0 ? "md:mr-auto md:pr-20" : "md:ml-auto md:pl-20 md:items-end"
@@ -644,7 +396,7 @@ const RoadmapSection = ({ isWeb3 = false }) => {
                       custom={index}
                       initial="hidden"
                       whileInView="visible"
-                      whileHover="hover"
+                      whileHover={{ y: -3 }}
                       viewport={{ once: true, margin: "-100px" }}
                       className={`w-full max-w-lg p-7 rounded-2xl backdrop-blur-md ${
                         isWeb3 
@@ -652,38 +404,23 @@ const RoadmapSection = ({ isWeb3 = false }) => {
                           : "bg-gradient-to-br from-white/10 to-white/5 border-blue-500/20 border"
                       } transition-all duration-300 ${
                         index % 2 === 0 ? "md:text-right" : ""
-                      } overflow-hidden relative group`}
+                      } overflow-hidden relative hover:shadow-lg`}
                       style={{
                         boxShadow: isWeb3
-                          ? `0 20px 40px -5px rgba(255, 92, 58, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1)`
-                          : "0 20px 40px -5px rgba(37, 99, 235, 0.15)",
+                          ? `0 10px 30px -5px rgba(255, 92, 58, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1)`
+                          : "0 10px 30px -5px rgba(37, 99, 235, 0.15)",
                         ...(isWeb3 && {
                           backgroundImage: `radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 60%)`,
                         })
                       }}
                     >
-                      {/* Subtle highlight on hover - reduced opacity */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700"
-                        style={{
-                          background: isWeb3
-                            ? `radial-gradient(circle at 50% 0%, rgba(255, 92, 58, 0.2) 0%, transparent 70%)`
-                            : "radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.2) 0%, transparent 70%)"
-                        }}
-                      />
-                      
-                      {/* Icon - unified styling */}
-                      <motion.div 
+                      {/* Icon - simplified */}
+                      <div 
                         className={`p-5 mx-4 rounded-xl inline-flex mb-8 relative z-10 ${
                           isWeb3 
                             ? `bg-gradient-to-br from-[#FF5C3A]/25 to-[#FF5C3A]/10 text-[#FF5C3A] drop-shadow-lg` 
                             : "bg-gradient-to-br from-blue-500/15 to-blue-500/5 text-blue-400"
                         }`}
-                        whileHover={{ 
-                          rotate: 10,
-                          scale: 1.05,
-                          transition: { duration: 0.3, ease: "easeOut" }
-                        }}
                         style={isWeb3 ? {
                           border: `1.5px solid rgba(255, 92, 58, 0.4)`,
                           boxShadow: `0 10px 20px -2px rgba(255, 92, 58, 0.3), inset 0 1px 2px rgba(255,255,255,0.15)`,
@@ -691,110 +428,32 @@ const RoadmapSection = ({ isWeb3 = false }) => {
                         } : {}}
                       >
                         {item.icon(isWeb3)}
-                      </motion.div>
-
-                      {/* Web3 only - add decorative elements to cards */}
-                      {isWeb3 && (
-                        <>
-                          <div 
-                            className="absolute top-0 right-0 w-24 h-24 -mt-10 -mr-10 opacity-15"
-                            style={{
-                              background: `radial-gradient(circle, #FF5C3A 0%, transparent 70%)`,
-                              borderRadius: "100%",
-                              filter: "blur(2px)"
-                            }}
-                          />
-                          <div 
-                            className="absolute bottom-0 left-0 w-20 h-20 -mb-8 -ml-8 opacity-15"
-                            style={{
-                              background: `radial-gradient(circle, #FF5C3A 0%, transparent 70%)`,
-                              borderRadius: "100%",
-                              filter: "blur(1px)"
-                            }}
-                          />
-                          <motion.div
-                            className="absolute right-5 bottom-5 w-16 h-1.5 rounded-full opacity-25"
-                            style={{
-                              background: `linear-gradient(90deg, transparent, #FF5C3A, transparent)`,
-                              boxShadow: `0 0 8px 0 rgba(255, 92, 58, 0.4)`
-                            }}
-                            animate={{ 
-                              width: ["30%", "60%", "30%"],
-                              opacity: [0.25, 0.5, 0.25]
-                            }}
-                            transition={{
-                              duration: 4,
-                              repeat: Infinity,
-                              ease: "easeInOut"
-                            }}
-                          />
-                          <div 
-                            className="absolute left-4 top-4 w-2 h-2 rounded-full opacity-30"
-                            style={{
-                              background: "#FF5C3A",
-                              boxShadow: `0 0 8px 0 rgba(255, 92, 58, 0.6)`
-                            }}
-                          />
-                        </>
-                      )}
+                      </div>
                       
-                      {/* Title with animated underline - improved visibility */}
+                      {/* Title - without animation */}
                       <div className="relative mb-3 inline-block z-10">
                         <h3 className={`text-2xl font-bold ${
                           isWeb3 ? "text-[#18181b]" : "text-white"
                         }`}>
                           {item.title}
                         </h3>
-                        <motion.div 
-                          initial={{ width: "0%" }}
-                          whileHover={{ width: "100%" }}
-                          className="h-[2px] rounded-full transition-all duration-300 absolute bottom-0 left-0"
-                          style={{
-                            background: isWeb3 ? "#FF5C3A" : "#3b82f6"
-                          }}
-                        />
                       </div>
                       
-                      {/* Description - improved z-index */}
+                      {/* Description */}
                       <p className={`${
                         isWeb3 ? "text-[#18181b]/70" : "text-white/70"
                       } leading-relaxed relative z-10`}>
                         {item.description}
                       </p>
-                      
-                      {/* Simplified corner decoration */}
-                      <motion.div
-                        className="absolute -z-1 w-32 h-32 opacity-20"
-                        style={{
-                          top: index % 3 === 0 ? -16 : "auto", 
-                          bottom: index % 3 !== 0 ? -16 : "auto",
-                          right: index % 2 === 0 ? -16 : "auto",
-                          left: index % 2 !== 0 ? -16 : "auto",
-                          borderRadius: "100%",
-                          background: isWeb3
-                            ? `radial-gradient(circle at 50% 0%, rgba(255, 92, 58, 0.2) 0%, transparent 70%)`
-                            : "radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.2) 0%, transparent 70%)",
-                        }}
-                        animate={{
-                          scale: [1, 1.1, 1],
-                          opacity: [0.2, 0.3, 0.2],
-                          rotate: [0, 45, 0]
-                        }}
-                        transition={{
-                          duration: 15,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
                     </motion.div>
-                  </HolographicCard>
+                  </SimpleCard>
                 </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Call to action with simplified design for both modes */}
+        {/* Call to action - already simplified */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
