@@ -12,6 +12,7 @@ import Web3ToggleSection from "@/components/Web3ToggleSection";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedStarsBackground from "@/components/AnimatedStarsBackground";
+import RoadmapSection from "@/components/RoadmapSection";
 
 // Animation variants for professional staggered transitions
 const heroVariants = {
@@ -74,7 +75,7 @@ export default function Home() {
   const [showScroll, setShowScroll] = useState(true);
   const [isWeb3, setIsWeb3] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [starBurst, setStarBurst] = useState(false);
 
@@ -490,149 +491,10 @@ export default function Home() {
           ></div>
         </div>
 
-        <section
-          className={`relative z-20 w-full py-24 md:py-36 flex flex-col items-center justify-center ${
-            isWeb3 ? "bg-[#FF5C3A]/5" : "bg-black/3"
-          } transition-colors duration-700`}
-        >
-          <AnimatedStarsBackground />
-          <div className="w-full flex flex-col items-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className={`text-3xl xs:text-4xl md:text-6xl font-extrabold tracking-tight mb-3 sm:mb-4 ${
-                isWeb3 ? "text-[#18181b]" : "text-blue-400"
-              } drop-shadow-lg text-center px-3 sm:px-4`}
-              style={
-                isWeb3
-                  ? { textShadow: "0 2px 16px rgba(255, 91, 58, 0.29)" }
-                  : {}
-              }
-            >
-              Trusted by the Solana Community
-            </motion.h2>
-            {/* Animated accent bar */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="h-1 w-32 rounded-full mb-2 origin-left"
-              style={{
-                background: isWeb3
-                  ? "linear-gradient(90deg, #FF5C3A 0%, #FFB07C 100%)"
-                  : "linear-gradient(90deg, #2563eb 0%, #60a5fa 100%)",
-              }}
-            />
-          </div>
-          <div className="max-w-6xl w-full px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center mb-16">
-            {[
-              { n: "10,000+", label: "Users since launch" },
-              { n: "$5M", label: "Market Cap reached" },
-              { n: "40M", label: "Tokens locked for 2 years" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.n}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 8px 32px 0 rgba(0,0,0,0.10)",
-                }}
-                className={`flex flex-col items-center justify-center rounded-xl xs:rounded-2xl sm:rounded-3xl shadow-xl transition-all duration-100 bg-white/20 dark:bg-white/5 backdrop-blur-md py-8 xs:py-10 sm:py-12 px-4 xs:px-5 sm:px-6 w-full mx-auto ${
-                  isWeb3
-                    ? "border border-white/10"
-                    : "border border-blue-400/10"
-                }`}
-                style={{
-                  boxShadow: isWeb3
-                    ? "0 8px 32px 0 rgba(255, 91, 58, 0.27)"
-                    : "0 8px 32px 0 rgba(37,99,235,0.10)",
-                }}
-              >
-                <span
-                  className={`text-4xl xs:text-5xl md:text-6xl font-extrabold drop-shadow-lg bg-clip-text text-transparent ${
-                    isWeb3
-                      ? "bg-gradient-to-r from-[#18181b] to-[#FF5C3A]"
-                      : "bg-gradient-to-r from-blue-900 to-blue-400"
-                  }`}
-                >
-                  {stat.n}
-                </span>
-                <span
-                  className="text-xl xs:text-2xl mt-3 xs:mt-4 font-medium"
-                  style={{ color: isWeb3 ? "#18181b" : "rgb(178, 178, 178)" }}
-                >
-                  {stat.label}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-          <div className="flex flex-col items-center justify-center max-w-5xl w-full px-4 sm:px-6 mt-8 grid grid-cols-1 md:grid-cols-1 gap-12 text-center">
-            {[
-              {
-                label: "Followed by",
-                value: "Anatoly (Solana Co-founder)",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.6 + i * 0.1 }}
-                viewport={{ once: true }}
-                className={`flex flex-col items-center relative px-2 md:px-8`}
-              >
-                {/* Divider for desktop */}
-                {i !== 0 && (
-                  <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-14 w-px bg-black/10 dark:bg-white/10" />
-                )}
-                <span
-                  className={`text-sm uppercase tracking-widest ${
-                    isWeb3 ? "text-black/60" : "text-white/60"
-                  } mb-2 font-semibold`}
-                >
-                  {item.label}
-                </span>
-                <span
-                  className={`text-2xl md:text-2xl font-bold ${
-                    isWeb3 ? "text-[#18181b]" : "text-white"
-                  } text-center leading-tight`}
-                >
-                  {item.value}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1 }}
-            viewport={{ once: true }}
-            className="w-full flex justify-center mt-12 sm:mt-16 md:mt-20"
-          >
-            <span
-              className={`inline-flex items-center justify-center ${
-                isWeb3 ? "text-[#18181b]" : "text-white"
-              } text-sm xs:text-base sm:text-lg font-semibold rounded-3xl xs:rounded-full sm:rounded-full px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 shadow-lg transition-all duration-300 scale-90 xs:scale-95 sm:scale-100 text-center ${
-                isWeb3
-                  ? "bg-gradient-to-r from-[#FF5C3A] to-[#FF6A4D]"
-                  : "bg-gradient-to-r from-blue-600 to-blue-400"
-              }`}
-              style={{
-                boxShadow: isWeb3
-                  ? "0 4px 24px 0 #FF5C3A33"
-                  : "0 4px 24px 0 #2563eb33",
-              }}
-            >
-              First AI Solana Tool to offer Deploy on Solana
-            </span>
-          </motion.div>
-        </section>
+        
+        <RoadmapSection isWeb3={isWeb3} />
+
+        
         <AutoDeploySection isWeb3={isWeb3} />
         {/* Deployment Sections - Both visible in all modes */}
         {!isWeb3 ? <NetlifyDeploySection isWeb3={isWeb3} /> : null}
